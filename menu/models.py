@@ -20,3 +20,7 @@ class MenuItem(models.Model):
     cuisine = models.ForeignKey(Cuisine, on_delete=models.CASCADE)
     def __str__(self):
         return self.title
+    
+    class Meta:
+        managed = False
+        db_table = 'menu_menuitem'
