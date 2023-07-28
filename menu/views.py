@@ -35,20 +35,21 @@ def get_menu(request):
 
 def add_menu_items_to_database(request):
     json_data = '''{
-        "ingredients": [
+    "ingredients": [
     {
-      "name": "Mud"
+    "id": 1,
+    "name": "Mud"
     },
     {
-      "name": "Lobsters"
+    "id": 2,
+    "name": "Lobsters"
     },
     {
-      "name": "Monkey Brain"
+    "id": 3,
+    "name": "Monkey Brain"
     },
-    ...
   ],
-      
-  "menuItems": [
+    "menuItems": [
     {
       "id": 9,
       "name": "Butterbeer",
@@ -56,7 +57,8 @@ def add_menu_items_to_database(request):
       "description": "Butterbeer",
       "spicy_level": 0,
       "category": 1,
-      "cuisine": 1
+      "cuisine": 1,
+      "ingredients": [1, 3]
     },
     {
       "id": 10,
@@ -65,7 +67,8 @@ def add_menu_items_to_database(request):
       "description": "Spiced pumpkin filling.",
       "spicy_level": 0,
       "category": 3,
-      "cuisine": 2
+      "cuisine": 2,
+      "ingredients": [1, 3]
     },
     {
       "id": 11,
@@ -74,7 +77,8 @@ def add_menu_items_to_database(request):
       "description": "A box of magical jelly beans with surprising and unpredictable flavors.",
       "spicy_level": 0,
       "category": 2,
-      "cuisine": 3
+      "cuisine": 3,
+      "ingredients": [1, 3]
     },
     {
       "id": 12,
@@ -83,7 +87,8 @@ def add_menu_items_to_database(request):
       "description": "Chocolates shaped like frogs that will run away in fear",
       "spicy_level": 0,
       "category": 1,
-      "cuisine": 4
+      "cuisine": 4,
+      "ingredients": [1, 3]
     },
     {
       "id": 13,
@@ -92,7 +97,8 @@ def add_menu_items_to_database(request):
       "description": "Tart made with golden syrup and breadcrumbs.",
       "spicy_level": 0,
       "category": 3,
-      "cuisine": 5
+      "cuisine": 5,
+      "ingredients": [1, 3]
     },
     {
       "id": 14,
@@ -101,7 +107,8 @@ def add_menu_items_to_database(request):
       "description": "Allows the drinker to assume the appearance of another person.",
       "spicy_level": 0,
       "category": 4,
-      "cuisine": 6
+      "cuisine": 6,
+      "ingredients": [1, 3]
     },
     {
       "id": 15,
@@ -110,7 +117,8 @@ def add_menu_items_to_database(request):
       "description": "Chocolate cupcakes",
       "spicy_level": 0,
       "category": 2,
-      "cuisine": 1
+      "cuisine": 1,
+      "ingredients": [1, 3]
     },
     {
       "id": 16,
@@ -119,7 +127,8 @@ def add_menu_items_to_database(request):
       "description": "Magical cakes of mandrake plants.",
       "spicy_level": 0,
       "category": 1,
-      "cuisine": 2
+      "cuisine": 2,
+      "ingredients": [1, 3]
     },
     {
       "id": 17,
@@ -128,7 +137,8 @@ def add_menu_items_to_database(request):
       "description": "Homemade cakes baked by Hagrid",
       "spicy_level": 0,
       "category": 3,
-      "cuisine": 3
+      "cuisine": 3,
+      "ingredients": [1, 3]
     },
     {
       "id": 18,
@@ -137,7 +147,8 @@ def add_menu_items_to_database(request):
       "description": "Freshly squeezed pumpkins",
       "spicy_level": 0,
       "category": 2,
-      "cuisine": 4
+      "cuisine": 4,
+      "ingredients": [1, 3]
     },
     {
       "id": 19,
@@ -146,7 +157,8 @@ def add_menu_items_to_database(request):
       "description": "Chocolate shaped like cauldrons, filled with molten caramel",
       "spicy_level": 0,
       "category": 1,
-      "cuisine": 5
+      "cuisine": 5,
+      "ingredients": [1, 3]
     },
     {
       "id": 20,
@@ -155,7 +167,8 @@ def add_menu_items_to_database(request):
       "description": "Fizzing candies that create a magical and explosive sensation in your mouth.",
       "spicy_level": 0,
       "category": 4,
-      "cuisine": 6
+      "cuisine": 6,
+      "ingredients": [1, 3]
     },
     {
       "id": 21,
@@ -164,7 +177,8 @@ def add_menu_items_to_database(request):
       "description": "Honeydukes sweet shop homemade chocolate",
       "spicy_level": 0,
       "category": 2,
-      "cuisine": 1
+      "cuisine": 1,
+      "ingredients": [1, 3]
     }
   ]
 }
