@@ -182,8 +182,8 @@ def export_menu_csv(request):
     
     menu_items = MenuItem.objects.all()  #simply fetches all the menuitems from the db table
 
-    writer = csv.writer(response)
-    writer.writerow(['Title', 'Description', 'Price', 'Spicy Level', 'Category', 'Cuisine'])
+    writer = csv.writer(response)       #writer is just a variable, but it uses csv.writer to write the csv data into the httpresponse as an argument
+    writer.writerow(['Title', 'Description', 'Price', 'Spicy Level', 'Category', 'Cuisine']) #
 
     for item in menu_items:
         writer.writerow([item.title, item.description, item.price, item.spicy_level, item.category.name, item.cuisine.name])
