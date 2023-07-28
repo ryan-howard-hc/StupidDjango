@@ -1,8 +1,11 @@
 from django.shortcuts import render
-
+from django.shortcuts import redirect
 # Create your views here.
 from django.http import JsonResponse
 from .models import MenuItem
+
+def default_menu(request):
+    return redirect('get_menu')
 
 def get_table(request):
     getit = list(MenuItem.objects.values())
