@@ -1,6 +1,8 @@
 from django.db import models
 
 #ManyToMany relationship is a db relationship where you can associate multiple instances of one model of with multiple instances of another model
+#Each MenuItem can be made up of multiple ingredients
+#Each ingredient can used in multiple MenuItem's
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -9,6 +11,12 @@ class Category(models.Model):
             
 class Cuisine(models.Model):
     name = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
+    
+class Ingredient(models.Model):
+    name = models.CharField(max_length=100)
+
     def __str__(self):
         return self.name
 
@@ -28,8 +36,3 @@ class MenuItem(models.Model):
         managed = False
         db_table = 'menu_menuitem'
         
-class Ingredient(models.Model):
-    name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
