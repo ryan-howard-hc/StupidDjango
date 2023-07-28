@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 # Create your views here.
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from .models import MenuItem, Category, Cuisine
 import json
+import csv
 
 def default_menu(request):
     return redirect('get_menu')
@@ -173,3 +174,18 @@ def add_menu_items_to_database(request):
         menu_item.save()
 
     return JsonResponse({"message": "Menu items added successfully."})
+  
+def export_menu_csv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="menu_items.csv"' #this is largely for user-end experience, though it's also for consistency across all browser defaults
+                                                                                #Not totally necessary though
+    
+    menu_items = MenuItem.objects.all()  #simply fetches all the menuitems from the db table
+
+    writer = csv.writer(response)
+    writer.writerow(['Title', 'Description', 'Price', 'Spicy Level', 'Category', 'Cuisine'])
+
+    for item in menu_items:
+        writer.writerow([item.title, item.description, item.price, item.spicy_level, item.category.name, item.cuisine.name])
+
+    return response
