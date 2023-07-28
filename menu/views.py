@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 # Create your views here.
 from django.http import JsonResponse, HttpResponse
-from .models import MenuItem, Category, Cuisine
+from .models import MenuItem, Category, Cuisine, Ingredient
 import json
 import csv
 
@@ -18,6 +18,8 @@ def get_menu(request):
     data = []
 
     for item in menu_items:
+        ingredients_list = [ingredient.name for ingredient in item.ingredients.all()]
+
         data.append({
             'title': item.title,
             'description': item.description,
@@ -25,6 +27,7 @@ def get_menu(request):
             'spicy_level': item.spicy_level,
             'category': item.category.name,
             'cuisine': item.cuisine.name, 
+            'ingredients': ingredients_list, 
         })
 
     return JsonResponse(data, safe=False)
@@ -183,7 +186,7 @@ def export_menu_csv(request):
     menu_items = MenuItem.objects.all()  #simply fetches all the menuitems from the db table
 
     writer = csv.writer(response)       #writer is just a variable, but it uses csv.writer to write the csv data into the httpresponse as an argument
-    writer.writerow(['Title', 'Description', 'Price', 'Spicy Level', 'Category', 'Cuisine']) #
+    writer.writerow(['Title', 'Description', 'Price', 'Spicy Level', 'Category', 'Cuisine']) 
 
     for item in menu_items:
         writer.writerow([item.title, item.description, item.price, item.spicy_level, item.category.name, item.cuisine.name])
