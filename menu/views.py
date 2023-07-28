@@ -35,6 +35,19 @@ def get_menu(request):
 
 def add_menu_items_to_database(request):
     json_data = '''{
+        "ingredients": [
+    {
+      "name": "Mud"
+    },
+    {
+      "name": "Lobsters"
+    },
+    {
+      "name": "Monkey Brain"
+    },
+    ...
+  ],
+      
   "menuItems": [
     {
       "id": 9,
@@ -158,6 +171,10 @@ def add_menu_items_to_database(request):
 '''
 
     data = json.loads(json_data)
+    ingredients = data["ingredients"]
+    for ingredient_data in ingredients:
+        ingredient, _ = Ingredient.objects.get_or_create(name=ingredient_data["name"])
+
     menu_items = data["menuItems"]
 
     for item in menu_items:
@@ -175,7 +192,9 @@ def add_menu_items_to_database(request):
         )
 
         menu_item.save()
-
+        for ingredient_id in item["ingredients"]:
+            ingredient = Ingredient.objects.get(id=ingredient_id)
+            menu_item.ingredients.add(ingredient)
     return JsonResponse({"message": "Menu items added successfully."})
   
 def export_menu_csv(request):

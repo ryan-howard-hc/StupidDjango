@@ -33,6 +33,5 @@ class MenuItem(models.Model):
         return self.title
     
     class Meta:
-        managed = False
         db_table = 'menu_menuitem'
         
