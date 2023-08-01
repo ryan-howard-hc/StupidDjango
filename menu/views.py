@@ -10,8 +10,8 @@ def default_menu(request):
     return redirect('get_menu')
 
 def get_table(request):
-    getit = list(MenuItem.objects.values())
-    return JsonResponse({'data': getit})
+    gettable = list(MenuItem.objects.values())
+    return JsonResponse({'data': gettable})
 
 def get_menu(request):
     menu_items = MenuItem.objects.select_related().all()
